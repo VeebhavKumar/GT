@@ -54,6 +54,49 @@
       color: #ffdf6c;
     }
 
+    /* Mobile hamburger button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url("./Assets/LogoGT2-removebg-preview.png") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 2rem;
+      animation: slideDown 1s ease-in-out;
+      z-index: 1;
+    }
+
     /* Blog Section */
     .blog-container {
       max-width: 1000px;
@@ -61,15 +104,8 @@
       background: #fff;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .blog-container h1 {
-      font-size: 2rem;
-      color: #004aad;
-      margin-bottom: 20px;
-      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .blog-meta {
@@ -79,59 +115,119 @@
       margin-bottom: 30px;
     }
 
-    .blog-container img {
-      width: 100%;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
     .blog-container h2 {
       margin-top: 25px;
       color: #0099ff;
       font-size: 1.4rem;
+      border-left: 4px solid #004aad;
+      padding-left: 10px;
     }
 
     .blog-container p {
       margin-top: 10px;
       text-align: justify;
+      animation: fadeUp 1s ease-in-out;
     }
 
+    .blog-container img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: transform 0.3s;
+    }
+
+    .blog-container img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Highlighted list */
+    ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin: 8px 0;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    
     /* CTA Button */
     .cta-btn {
       display: inline-block;
       margin-top: 30px;
-      padding: 12px 25px;
-      background: #004aad;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, #004aad, #0099ff);
       color: #fff;
-      border-radius: 6px;
+      font-size: 1rem;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .cta-btn:hover {
-      background: #002b6f;
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #003080, #0066cc);
     }
 
-    /* Animation */
+    /* Animations */
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
-      .blog-container {
-        padding: 20px;
+      header {
+        flex-wrap: wrap;
       }
 
-      header {
-        flex-direction: column;
-        text-align: center;
+      nav {
+        width: 100%;
+        display: none;
       }
 
       nav ul {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        background: #004aad;
+      }
+
+      nav.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero {
+        height: 200px;
+      }
+
+      .hero h1 {
+        font-size: 1.4rem;
+      }
+
+      .cta-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
@@ -141,9 +237,18 @@
   <!-- Header -->
   <header>
     <a href="../index.html" class="logo">
-      <img src="/Assets/LogoGT2-removebg-preview.png" alt="Garibnath Tutorials Logo">
+      <img src="./Assets/LogoGT2-removebg-preview.png" alt="Garibnath Tutorials Logo">
     </a>
-    <nav>
+
+    <!-- Hamburger Button -->
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="nav-menu">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#courses">Courses</a></li>
@@ -154,17 +259,21 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>What is Garibnath Tutorials?<br>Muzaffarpur’s Leading Coaching Institute</h1>
+  </section>
+
   <!-- Blog Section -->
   <section class="blog-container">
-    <h1>What is Garibnath Tutorials? – Complete Guide to Muzaffarpur’s Leading Coaching Institute</h1>
     <p class="blog-meta">Published on August 20, 2025 | By Garibnath Tutorials Team</p>
-
-    <img src="https://source.unsplash.com/1000x400/?education,classroom" alt="Garibnath Tutorials Blog">
 
     <p>Education is the foundation of success, and in today’s competitive world, choosing the right coaching institute plays a vital role in shaping a student’s future. In Muzaffarpur, one name stands out as a trusted guide for academic excellence – <strong>Garibnath Tutorials (GT)</strong>.</p>
 
     <h2>About Garibnath Tutorials</h2>
     <p>Founded with the vision of providing quality education and personalized learning, Garibnath Tutorials has grown into Muzaffarpur’s leading coaching institute. With a strong team of experienced teachers and a student-first approach, GT has become the top choice for students from Class 4th to 12th.</p>
+
+    <img src="https://source.unsplash.com/1000x400/?books,learning" alt="Garibnath Tutorials Classroom">
 
     <h2>Courses Offered</h2>
     <p>GT offers comprehensive coaching for <strong>Science, Mathematics, English, and Social Studies</strong> from Class 4th to 10th, along with specialized preparation in <strong>Physics, Chemistry, Biology, and Mathematics</strong> for Class 11th and 12th students. The curriculum is designed to build strong fundamentals and prepare students for board as well as competitive exams.</p>
@@ -174,11 +283,11 @@
 
     <h2>Why Choose Garibnath Tutorials?</h2>
     <ul>
-      <li>✅ Small batch sizes for personalized attention</li>
-      <li>✅ Regular tests & performance analysis</li>
-      <li>✅ Modern teaching methods with digital support</li>
-      <li>✅ Strong track record of excellent results</li>
-      <li>✅ Motivational sessions to build confidence</li>
+      <li>Small batch sizes for personalized attention</li>
+      <li>Regular tests & performance analysis</li>
+      <li>Modern teaching methods with digital support</li>
+      <li>Strong track record of excellent results</li>
+      <li>Motivational sessions to build confidence</li>
     </ul>
 
     <h2>Our Vision</h2>
@@ -187,6 +296,16 @@
     <!-- Fixed Admission Button -->
     <a href="../index.html#admission" class="cta-btn">📢 Join GT – Admissions Open for 2025-26</a>
   </section>
+
+  <script>
+    // Toggle mobile menu
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-menu");
+
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
 
 </body>
 </html>

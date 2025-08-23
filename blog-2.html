@@ -54,6 +54,49 @@
       color: #ffdf6c;
     }
 
+    /* Mobile hamburger button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url("./Assets/GTBuillding.jpeg") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 2rem;
+      animation: slideDown 1s ease-in-out;
+      z-index: 1;
+    }
+
     /* Blog Section */
     .blog-container {
       max-width: 1000px;
@@ -61,15 +104,8 @@
       background: #fff;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .blog-container h1 {
-      font-size: 2rem;
-      color: #004aad;
-      margin-bottom: 20px;
-      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .blog-meta {
@@ -79,59 +115,136 @@
       margin-bottom: 30px;
     }
 
-    .blog-container img {
-      width: 100%;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
     .blog-container h2 {
       margin-top: 25px;
       color: #0099ff;
       font-size: 1.4rem;
+      border-left: 4px solid #004aad;
+      padding-left: 10px;
     }
 
     .blog-container p {
       margin-top: 10px;
       text-align: justify;
+      animation: fadeUp 1s ease-in-out;
+      font-size: 1rem;
+    }
+
+    .blog-container img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: transform 0.3s;
+    }
+
+    .blog-container img:hover {
+      transform: scale(1.02);
+    }
+
+    ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin: 8px 0;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
     }
 
     /* CTA Button */
     .cta-btn {
       display: inline-block;
       margin-top: 30px;
-      padding: 12px 25px;
-      background: #004aad;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, #004aad, #0099ff);
       color: #fff;
-      border-radius: 6px;
+      font-size: 1rem;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .cta-btn:hover {
-      background: #002b6f;
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #003080, #0066cc);
     }
 
-    /* Animation */
+    /* Animations */
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
-      .blog-container {
-        padding: 20px;
+      header {
+        flex-wrap: wrap;
       }
 
-      header {
-        flex-direction: column;
-        text-align: center;
+      nav {
+        width: 100%;
+        display: none;
       }
 
       nav ul {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        background: #004aad;
+      }
+
+      nav.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero {
+        height: 200px;
+      }
+
+      .hero h1 {
+        font-size: 1.2rem;
+      }
+
+      .blog-container {
+        padding: 20px;
+      }
+
+      .blog-container h2 {
+        font-size: 1.1rem;
+      }
+
+      .blog-container p {
+        font-size: 0.9rem;
+      }
+
+      .blog-meta {
+        font-size: 12px;
+      }
+
+      .cta-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 12px 20px;
       }
     }
   </style>
@@ -141,9 +254,16 @@
   <!-- Header -->
   <header>
     <a href="../index.html" class="logo">
-      <img src="../assets/LogoGT.jpeg" alt="Garibnath Tutorials Logo">
+      <img src="./Assets/LogoGT2-removebg-preview.png" alt="Garibnath Tutorials Logo">
     </a>
-    <nav>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="nav-menu">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#courses">Courses</a></li>
@@ -154,40 +274,52 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Teaching Methods at Garibnath Tutorials<br>Concept Clarity, Tests & Mentorship</h1>
+  </section>
+
   <!-- Blog Section -->
   <section class="blog-container">
-    <h1>Garibnath Tutorials Teaching Methods – Concept Clarity, Tests & Mentorship</h1>
     <p class="blog-meta">Published on August 20, 2025 | By Garibnath Tutorials Team</p>
 
-    <img src="https://source.unsplash.com/1000x400/?teaching,education" alt="Teaching Methods at Garibnath Tutorials">
-
-    <p>At <strong>Garibnath Tutorials (GT)</strong>, we believe that the true purpose of education is not just completing the syllabus but ensuring that every student builds a strong foundation of concepts, gains confidence, and achieves excellence. Our teaching methodology is designed with a student-centric approach that emphasizes clarity, consistency, and continuous improvement.</p>
+    <p>At <strong>Garibnath Tutorials (GT)</strong>, we believe that education is more than just finishing the syllabus – it’s about building strong concepts, boosting confidence, and ensuring long-term academic excellence. Our teaching methodology is designed with a student-first approach focusing on clarity, consistency, and continuous improvement.</p>
 
     <h2>1. Focus on Concept Clarity</h2>
-    <p>We prioritize <strong>understanding over rote learning</strong>. Every topic is explained with real-life examples, step-by-step problem-solving, and interactive discussions. Our teachers ensure that each student develops a clear conceptual base, making advanced topics easier to grasp.</p>
+    <p>We prioritize <strong>understanding over rote learning</strong>. Topics are explained with real-life examples, step-by-step problem-solving, and interactive discussions. This ensures students build a solid foundation for advanced subjects.</p>
+
+    <img src="https://source.unsplash.com/1000x400/?teacher,blackboard" alt="Concept Clarity Teaching at GT">
 
     <h2>2. Regular Tests & Performance Tracking</h2>
-    <p>Learning is incomplete without self-evaluation. GT conducts <strong>weekly and monthly tests</strong> to track students’ progress. These tests are followed by detailed analysis sessions where teachers highlight strengths and suggest ways to overcome weaknesses. Parents also receive regular feedback to stay updated on their child’s growth.</p>
+    <p>Learning is incomplete without practice and evaluation. GT conducts <strong>weekly and monthly tests</strong> to monitor progress. Detailed analysis sessions highlight strengths and suggest ways to improve. Parents are regularly updated about performance.</p>
 
     <h2>3. Personalized Mentorship</h2>
-    <p>Our faculty members go beyond classroom teaching to act as mentors. With <strong>small batch sizes</strong>, we ensure personal attention to each student. Teachers provide motivation, guidance, and career counseling, helping students stay focused and stress-free during their academic journey.</p>
+    <p>With <strong>small batch sizes</strong>, each student receives personal attention. Our teachers act as mentors—providing motivation, guidance, and career counseling to help students stay focused and stress-free.</p>
 
     <h2>4. Blending Tradition with Innovation</h2>
-    <p>While we follow proven teaching practices, we also integrate modern learning tools like <strong>visual aids, digital content, and interactive sessions</strong>. This hybrid model makes learning engaging and ensures that students are well-prepared for board as well as competitive exams.</p>
+    <p>Along with proven teaching practices, GT uses <strong>visual aids, digital tools, and interactive learning</strong>. This mix of tradition and innovation keeps students engaged and exam-ready.</p>
 
-    <h2>Why GT’s Teaching Method Works</h2>
+    <h2>Why GT’s Teaching Works</h2>
     <ul>
-      <li>✅ Strong fundamentals and clarity in every subject</li>
-      <li>✅ Confidence-building through regular practice</li>
-      <li>✅ Continuous support from mentors</li>
-      <li>✅ Balanced approach of discipline and encouragement</li>
+      <li>✅ Strong conceptual foundation</li>
+      <li>✅ Confidence through practice & feedback</li>
+      <li>✅ Dedicated mentorship & guidance</li>
+      <li>✅ Balanced approach of discipline + encouragement</li>
     </ul>
 
-    <p>Through this structured yet flexible teaching approach, Garibnath Tutorials has helped hundreds of students achieve academic excellence and secure top results in their exams.</p>
+    <p>Through this structured approach, Garibnath Tutorials has helped hundreds of students achieve outstanding results and academic success.</p>
 
-    <!-- Fixed Admission Button -->
     <a href="../index.html#admission" class="cta-btn">📢 Join GT – Admissions Open for 2025-26</a>
   </section>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-menu");
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
 
 </body>
 </html>

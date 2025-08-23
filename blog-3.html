@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Garibnath Tutorials Muzaffarpur Address, Contact Details, and Admission Process – All you need to know to join Bihar’s trusted institute.">
-  <title>Blog - Garibnath Tutorials Muzaffarpur Address, Contact & Admission</title>
+  <meta name="description" content="Garibnath Tutorials Muzaffarpur – Address, Contact Details & Admission Process for students.">
+  <title>Blog - Garibnath Tutorials Address & Admission</title>
   <style>
+    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -19,6 +20,7 @@
       line-height: 1.8;
     }
 
+    /* Header */
     header {
       background: linear-gradient(90deg, #004aad, #0099ff);
       padding: 15px 5%;
@@ -52,21 +54,58 @@
       color: #ffdf6c;
     }
 
+    /* Mobile hamburger button */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: #fff;
+      margin: 4px 0;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      background: url("./Assets/G12.jpeg") center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero h1 {
+      position: relative;
+      font-size: 2rem;
+      animation: slideDown 1s ease-in-out;
+      z-index: 1;
+    }
+
+    /* Blog Section */
     .blog-container {
       max-width: 1000px;
       margin: 40px auto;
       background: #fff;
       padding: 40px;
       border-radius: 12px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .blog-container h1 {
-      font-size: 2rem;
-      color: #004aad;
-      margin-bottom: 20px;
-      text-align: center;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+      animation: fadeIn 1.2s ease-in-out;
     }
 
     .blog-meta {
@@ -76,56 +115,136 @@
       margin-bottom: 30px;
     }
 
-    .blog-container img {
-      width: 100%;
-      border-radius: 10px;
-      margin: 20px 0;
-    }
-
     .blog-container h2 {
       margin-top: 25px;
       color: #0099ff;
       font-size: 1.4rem;
+      border-left: 4px solid #004aad;
+      padding-left: 10px;
     }
 
     .blog-container p {
       margin-top: 10px;
       text-align: justify;
+      animation: fadeUp 1s ease-in-out;
+      font-size: 1rem;
     }
 
+    .blog-container img {
+      width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+      transition: transform 0.3s;
+    }
+
+    .blog-container img:hover {
+      transform: scale(1.02);
+    }
+
+    ul {
+      margin-top: 15px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin: 8px 0;
+      list-style: none;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    /* CTA Button */
     .cta-btn {
       display: inline-block;
       margin-top: 30px;
-      padding: 12px 25px;
-      background: #004aad;
+      padding: 14px 28px;
+      background: linear-gradient(90deg, #004aad, #0099ff);
       color: #fff;
-      border-radius: 6px;
+      font-size: 1rem;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: transform 0.3s, background 0.3s;
     }
 
     .cta-btn:hover {
-      background: #002b6f;
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #003080, #0066cc);
     }
 
+    /* Animations */
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(20px);}
       to {opacity: 1; transform: translateY(0);}
     }
 
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-50px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .blog-container {
-        padding: 20px;
+      header {
+        flex-wrap: wrap;
       }
 
-      header {
-        flex-direction: column;
-        text-align: center;
+      nav {
+        width: 100%;
+        display: none;
       }
 
       nav ul {
         flex-direction: column;
-        gap: 10px;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 0;
+        background: #004aad;
+      }
+
+      nav.active {
+        display: block;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero {
+        height: 200px;
+      }
+
+      .hero h1 {
+        font-size: 1.2rem;
+      }
+
+      .blog-container {
+        padding: 20px;
+      }
+
+      .blog-container h2 {
+        font-size: 1.1rem;
+      }
+
+      .blog-container p {
+        font-size: 0.9rem;
+      }
+
+      .blog-meta {
+        font-size: 12px;
+      }
+
+      .cta-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+        padding: 12px 20px;
       }
     }
   </style>
@@ -135,9 +254,16 @@
   <!-- Header -->
   <header>
     <a href="../index.html" class="logo">
-      <img src="../assets/LogoGT.jpeg" alt="Garibnath Tutorials Logo">
+      <img src="./Assets/LogoGT2-removebg-preview.png" alt="Garibnath Tutorials Logo">
     </a>
-    <nav>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav id="nav-menu">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="../index.html#courses">Courses</a></li>
@@ -148,21 +274,23 @@
     </nav>
   </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Garibnath Tutorials Muzaffarpur<br>Address, Contact & Admission Process</h1>
+  </section>
+
   <!-- Blog Section -->
   <section class="blog-container">
-    <h1>Garibnath Tutorials Muzaffarpur Address, Contact & Admission Process</h1>
-    <p class="blog-meta">Published on August 20, 2025 | By Garibnath Tutorials Team</p>
+    <p class="blog-meta">Published on August 24, 2025 | By Garibnath Tutorials Team</p>
 
-    <img src="https://source.unsplash.com/1000x400/?muzaffarpur,building" alt="Garibnath Tutorials Address Muzaffarpur">
-
-    <p>In the <em>labyrinth</em> of coaching centers, <strong>Garibnath Tutorials (GT)</strong> in Muzaffarpur stands out as a beacon that orchestrates discipline, clarity, and mentorship. For students who wish to embark on a journey that transcends ordinary learning, here’s everything you need to know about reaching GT, contacting the faculty, and weaving into its intricate admission tapestry.</p>
+    <p>In the <strong>hub of education in Muzaffarpur</strong>, Garibnath Tutorials (GT) stands tall as a trusted name for quality learning. If you’re planning to enroll, here’s everything you need to know about our <strong>address, contact details, and admission process</strong>.</p>
 
     <h2>1. Address of Garibnath Tutorials</h2>
-    <p>Nestled in the verdant academic hub of Muzaffarpur, GT is easily accessible. Its location beckons students from across the region.  
-    <br><strong>Address:</strong> Ahiyapur Chowk Near Hanuman Mandir, Muzaffarpur, Bihar – 842001</p>
+    <p><strong>Address:</strong> Ahiyapur Chowk Near Hanuman Mandir, Muzaffarpur, Bihar – 842001</p>
+
+    <img src="" alt="Garibnath Tutorials Address Muzaffarpur">
 
     <h2>2. Contact Details</h2>
-    <p>To delve into queries or guidance, students and parents can directly intertwine with GT’s support system:</p>
     <ul>
       <li>📞 <strong>Phone:</strong> +91 82107366693</li>
       <li>📧 <strong>Email:</strong> garibnathtutorials@gmail.com</li>
@@ -170,20 +298,30 @@
     </ul>
 
     <h2>3. Admission Process</h2>
-    <p>The admission process at GT has been reimagined into a smooth and captivating flow, ensuring students face no obstacles in their academic crucible:</p>
     <ul>
-      <li>Step 1: Visit our <strong>admission desk</strong> or apply online through the official website.</li>
-      <li>Step 2: Fill in the admission form with required details.</li>
-      <li>Step 3: Appear for a short counseling and guidance session.</li>
-      <li>Step 4: Complete the fee structure and confirm enrollment.</li>
+      <li>✅ Step 1: Visit our <strong>admission desk</strong> or apply online.</li>
+      <li>✅ Step 2: Fill in the admission form with required details.</li>
+      <li>✅ Step 3: Attend a short counseling and guidance session.</li>
+      <li>✅ Step 4: Complete fee payment and confirm your enrollment.</li>
     </ul>
 
     <h2>Why This Matters</h2>
-    <p>GT’s admission journey is not just paperwork—it’s a kaleidoscopic process where learning, mentorship, and ambition intertwine. With every batch, a mosaic of dedicated learners is orchestrated, creating an environment where even the most enigmatic doubts melt into clarity. Certainly, this is where true academic victuals are served.</p>
+    <p>GT’s admission journey is designed to be smooth and student-friendly. More than just paperwork, it ensures that every learner gets the right guidance and mentorship before beginning their academic journey with us.</p>
 
-    <!-- CTA -->
-    <a href="../index.html#admission" class="cta-btn">📢 Join GT – Admissions Open for 2025-26</a>
+    <a href="../index.html#admission" class="cta-btn">📌 Start Your Admission</a>
   </section>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-menu");
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
 
 </body>
 </html>
+
+
+
